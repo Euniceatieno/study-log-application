@@ -1,0 +1,67 @@
+
+
+{% load bootstrap4 %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,
+shrink-to-fit=no">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap" rel="stylesheet">
+<title>cH STUDY LOG</title>
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+ </head>
+    <body style="background-color: rgb(160, 156, 156);">
+         <div>
+             <div>
+                 
+        <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border" >
+         <a class="navbar-brand" href="{% url 'study_log_app:index' %}" style="font-size: 45px; color: rgb(60, 5, 61);font-family: 'Cinzel', serif;">
+        cH STUDY LOG</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarCollapse" aria-controls="navbarCollapse"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'study_log_app:topics' %}" style="font-size: 25px;
+             color: rgb(60, 5, 61);
+             margin-left: 10%;font-family: 'Cinzel', serif;
+             ">
+            TOPICS</a></li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'usersapp:logout' %}" style="font-size: 20px; color: rgb(60, 5, 61);font-family: 'Cinzel', serif;">LOG OUT</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                <p style=" color: rgb(60, 5, 61);font-size: 17px; margin:0 0 0 8px;font-family: 'Montserrat', sans-serif;font-weight: bold;">Don't have an account?</p><a class="nav-link" href="{% url 'usersapp:register' %}" style="font-size: 25px; color: rgb(60, 5, 61);font-family: 'Cinzel', serif;">REGISTER</a>
+                </li>
+                <li class="nav-item">
+                {% endif %}
+                </ul>
+               </div>
+                </div>
+                </nav>
+                
+                <main role="main" class="container">
+                    <div class="pb-2 mb-2 border-bottom">
+                    {% block page_header %}{% endblock page_header %}
+                    </div>
+                    <div>
+                    {% block content %}{% endblock content %}
+                    </div>
+                    </main>
+                    </body>
+                    </html>

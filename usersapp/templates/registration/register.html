@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'study_log_app/base.html' %}
+    {% block content %}
+    <h1 style="text-align: center;color:rgb(60, 5, 61);font-family: 'Cinzel', serif ;font-size: 30px;">CREATE AN ACCOUNT</h1>
+    <div id="form">
+    <form method="POST" action="{% url 'usersapp:register' %}">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit" 
+    style="color: white;
+    background-color:rgb(60, 5, 61);
+    font-family: 'Cinzel', serif;
+    width: 100%;
+    border-radius: 10px;
+    height: 40px;
+    ">Register</button>
+
+    <input type="hidden" name="next" value="{% url 'study_log_app:index' %}" />
+
+    </form>
+</div>
+    <style>
+         #form{
+            margin:2% auto 0 auto;
+            padding:30px;
+            width:700px;
+            height:auto;
+            overflow:hidden;
+            background:#fae3ef;
+            border-radius:20px;
+            font-size: 20px;
+          }
+          input{
+           width: 100%;
+           outline: none;
+           border: 3px solid purple ;
+           font-size: 15px;
+           padding: 8px 10px;
+           border-radius: 10px; 
+       }
+       
+    </style>
+    {% endblock content %}   
+</body>
+</html>

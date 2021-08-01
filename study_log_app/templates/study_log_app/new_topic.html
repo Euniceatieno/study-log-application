@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'study_log_app/base.html' %}
+    {% block content %}
+    <p style="font-size: 25px;color:  rgb(38, 3, 41);">ADD A TOPIC:</p>
+    <form action="{% url 'study_log_app:new_topic' %}" method="POST">
+    {% csrf_token %}  <!-- prevent attackers from gaining aunauthorized access to the server  -->
+    
+     {{ form.as_p }}  <!-- creates all the fields necessary to display the form automatically,the p tells django to display theform in paragraph format  -->
+     <button name="submit" style="font-size: 25px;color:  rgb(38, 3, 41);border-radius: 10px; border: solid rgb(60, 5, 61); ">ADD TOPIC</button>
+    </form>
+    <style>
+        input{
+            width: 40%;
+            border-radius: 10px;
+         font-size: 25px;
+         
+        }
+    </style>
+   
+    {% endblock content %}
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'study_log_app/base.html' %}
+    {% block content %}
+    <p style="font-size: 30px;
+    color: rgb(60, 5, 61);margin-left: 4%;margin-bottom: 3%;">{{ topic|upper }}</p>
+
+   
+    <p><a href="{% url 'study_log_app:new_entry' topic.id %}" style="font-size: 15px;
+        color: rgb(60, 5, 61); border-radius: 15px;
+  border: solid rgb(60, 5, 61);
+  padding: 10px;margin-left: 4%;">ADD ENTRY</a></p>
+   <p style="font-size: 25px;
+   color: rgb(60, 5, 61);margin-top: 4%;margin-left: 4%;">TOPIC ENTRIES: </p>
+    <ul style="font-size: 20px;
+    color: rgb(60, 5, 61);margin-top: 0;">
+    {% for entry in entries %}
+    <li style="background-color: rgb(230, 225, 225);height: 150px;border-radius: 10px;padding: 15px;list-style: none;">
+        <p>{{ entry.input_date|date:'M d, Y H:i' }}</p>
+        <p>{{ entry.text|linebreaks }}</p>
+        <p><a href="{% url 'study_log_app:edit_entry' entry.id %}" style="font-size: 12px;
+            color: rgb(60, 5, 61); border-radius: 10px;
+  border: solid rgb(60, 5, 61);
+  padding: 7px;">EDIT ENTRY</a></p>
+    </li>
+    {% empty %}
+        <li>No entries have been made.</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}   
+</body>
+</html> 

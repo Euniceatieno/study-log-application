@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{% extends 'study_log_app/base.html' %}
+{% block content %}
+<p style="font-size: 35px;color: rgb(60, 5, 61);">TOPICS</p>
+<p style="font-size: 20px;color: rgb(60, 5, 61);font-style: italic;">Click on a topic to write what you have learnt: </p>
+<ul style="margin-bottom: 4%;">
+{% for topic in topics %}
+<li style=" background-color: rgb(216, 210, 210);
+margin-top: 10px;
+height: 50px;
+list-style: none;
+border-radius: 10px;
+padding: 17px; ">
+    <a href="{% url 'study_log_app:topic' topic.id %}" style="font-size: 20px;
+    color: rgb(60, 5, 61);" >{{ topic|title }}
+    <a style="padding-right: 0;" href="{% url 'study_log_app:edit_topic' topic.id %}"><img style="margin-left: 40px;" src="https://bit.ly/3j5Pmq0" width="20px" height="20px"></a>
+</li>
+{% empty %}
+<li style="font-size: 20px;margin-top: 5%;">No topics have been added yet.</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'study_log_app:new_topic' %}"
+ style="font-size: 20px;
+ color: rgb(60, 5, 61);
+  border-radius: 10px;
+  border: solid rgb(60, 5, 61);
+  padding: 10px;
+
+  ">ADD TOPIC</a>
+
+
+{% endblock content %}   
+</body>
+</html>

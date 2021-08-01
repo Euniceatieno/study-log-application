@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   
+ 
+    <title>Document</title>
+</head>
+<body >
+    {% extends "study_log_app/base.html" %}
+    {% block content %}
+    <div id="stmtbody" style="background-color: rgb(230, 225, 225);border-radius: 10px; margin-top: 3%;display: flex;margin-bottom: 5%;">
+    <img src="https://i.pinimg.com/564x/7a/38/ff/7a38ff8d4c1583ec66bb89dac45c291c.jpg" height="500px" style="padding: 15px;" >
+     <p style=" color: rgb(60, 5, 61); font-size: 35px;text-align: center;margin-left: 10px;margin-top: 90px;font-family: 'Montserrat', sans-serif;">
+        <span class="navbar-text" style="font-size: 30px;margin-right: 10%; color: rgb(60, 5, 61);font-family: 'Cinzel', serif;">Hello, {{ user.username }}.</span>
+        <br>Study log helps you Keep track of your learning experiences.
+           Document your learning<br> all in one place <br>
+           {% if user.is_authenticated != True %}
+           <a class="nav-link" href="{% url 'usersapp:login' %}" 
+           style="font-size: 25px; 
+           color: rgb(60, 5, 61);
+           font-family: 'Cinzel', serif;
+           border: solid rgb(60, 5, 61);
+           border-radius: 10px;
+           width: 40%;
+           margin: 10% 0 0 25%;
+         
+           ">LOG IN</a></li>
+           {% endif %}
+
+       
+         </p>
+        </div>
+         
+     {% endblock content %}
+</body>
+</html>

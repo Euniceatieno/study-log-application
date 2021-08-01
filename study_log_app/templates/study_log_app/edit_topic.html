@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'study_log_app/base.html' %}
+    {% block content %}
+    <p><a href="{% url 'study_log_app:topic' topic.id %}" style="font-size: 40px;
+        color: rgb(60, 5, 61);">{{ topic|capfirst }}</a></p>
+    <p style="font-size: 25px;
+    color: rgb(60, 5, 61);">Edit Topic:</p>
+    <form action="{% url 'study_log_app:edit_topic' topic.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit" style="font-size: 20px;color:  rgb(38, 3, 41);border-radius: 10px; border: solid rgb(60, 5, 61);"
+        >SAVE CHANGES</button>
+    </form>
+    <style>
+        input{
+            width: 40%;
+            font-size: 25px;
+            border-radius: 10px;
+        }
+    </style>
+    {% endblock content %}
+
+
+</body>
+</html>
