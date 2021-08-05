@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-f661o3#(xccs(-kaw50(j-ut@0#)ntbsiy*og5yvj@d0x_i)0@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['studylogapp.herokuapp.com']
+ALLOWED_HOSTS = ['https://stormy-spire-19576.herokuapp.com']
 
 
 # Application definition
@@ -138,3 +139,8 @@ LOGIN_URL = 'usersapp:login'
 #Heroku settings
 import django_heroku
 django_heroku.settings(locals())
+
+if os.environ.get('DEBUG') == 'TRUE':
+    DEBUG = True
+elif os.environ.get('DEBUG') == 'FALSE':
+    DEBUG = False
