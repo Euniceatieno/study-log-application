@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-f661o3#(xccs(-kaw50(j-ut@0#)ntbsiy*og5yvj@d0x_i)0@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://stormy-spire-19576.herokuapp.com']
+ALLOWED_HOSTS = ['https://studylogapplication.herokuapp.com']
 
 
 # Application definition
