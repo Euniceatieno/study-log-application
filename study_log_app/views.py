@@ -35,7 +35,7 @@ def new_topic(request):
         form =TopicForm()
     else: 
         #posting the data submitted
-        form =TopicForm(data=request.POST)
+        form =TopicForm(request.POST,request.FILES)
         if form.is_valid(): #validating that all fields are filled in correctly
             new_topic = form.save(commit=False)
             new_topic.owner = request.user
@@ -50,7 +50,7 @@ def edit_topic(request,topic_id):
         if request.method!='POST':
             form =TopicForm(instance=topic)
         else:
-            form =TopicForm(instance=topic,data=request.POST)    
+            form =TopicForm(request.FILES,instance=topic,data=request.POST)    
             if form.is_valid():
                 form.save()
                 return redirect('study_log_app:topic',topic_id=topic.id)    
@@ -66,7 +66,7 @@ def new_entry(request,topic_id):
     if request.method != 'POST':
         form = EntryForm() 
     else:
-        form =EntryForm(data=request.POST)  
+        form =EntryForm(request.POST,request.FILES)  
         if form.is_valid():
             new_entry =  form.save(commit=False)
             new_entry.topic = topic
@@ -85,7 +85,7 @@ def edit_entry(request,entry_id):
     if request.method != 'POST':
         form =EntryForm(instance=entry)
     else:
-        form =EntryForm(instance=entry,data=request.POST)    
+        form =EntryForm(request.FILES,instance=entry,data=request.POST)    
         if form.is_valid():
             form.save()
             return redirect('study_log_app:topic',topic_id = topic.id)    

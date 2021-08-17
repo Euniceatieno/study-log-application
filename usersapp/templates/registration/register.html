@@ -11,7 +11,7 @@
     {% block content %}
     <h1 style="text-align: center;color:rgb(60, 5, 61);font-family: 'Cinzel', serif ;font-size: 30px;">CREATE AN ACCOUNT</h1>
     <div id="form">
-    <form method="POST" action="{% url 'usersapp:register' %}">
+    <form method="POST" action="{% url 'usersapp:register' %}" enctype="multipart/form-data">
 
     {% csrf_token %}
     {{ form.as_p }}

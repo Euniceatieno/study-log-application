@@ -13,7 +13,7 @@
         color: rgb(60, 5, 61);">{{ topic|capfirst }}</a></p>
     <p style="font-size: 25px;
     color: rgb(60, 5, 61);">Edit Topic:</p>
-    <form action="{% url 'study_log_app:edit_topic' topic.id %}" method="post">
+    <form action="{% url 'study_log_app:edit_topic' topic.id %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button name="submit" style="font-size: 20px;color:  rgb(38, 3, 41);border-radius: 10px; border: solid rgb(60, 5, 61);"

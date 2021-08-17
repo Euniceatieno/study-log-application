@@ -14,7 +14,7 @@
     <p>Your credentials did not match.Try again.</p>
     {% endif %}
     <div id="form">
-    <form action="{% url 'usersapp:login' %}" method="post">
+    <form action="{% url 'usersapp:login' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button name="submit"   style="color: white;

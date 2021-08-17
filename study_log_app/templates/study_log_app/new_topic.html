@@ -10,7 +10,7 @@
     {% extends 'study_log_app/base.html' %}
     {% block content %}
     <p style="font-size: 25px;color:  rgb(38, 3, 41);">ADD A TOPIC:</p>
-    <form action="{% url 'study_log_app:new_topic' %}" method="POST">
+    <form action="{% url 'study_log_app:new_topic' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}  <!-- prevent attackers from gaining aunauthorized access to the server  -->
     
      {{ form.as_p }}  <!-- creates all the fields necessary to display the form automatically,the p tells django to display theform in paragraph format  -->
